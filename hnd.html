@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géométrie - Leçons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #111111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 16px;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 36px 28px;
+            width: 100%;
+            max-width: 740px;
+            text-align: center;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #555555;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.2s ease;
+        }
+        .back-btn:hover, .back-btn:active {
+            color: #111111;
+        }
+        h1 {
+            color: #111111;
+            font-size: 2.2rem;
+            margin-bottom: 28px;
+            font-weight: 700;
+        }
+        .cours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .cours-card {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 22px;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #111111;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.22s ease;
+        }
+        .cours-card i {
+            color: #111111;
+            transition: transform 0.22s ease, color 0.22s ease;
+        }
+        .cours-card:hover, .cours-card:active {
+            background-color: #9b59b6;
+            border-color: #8e44ad;
+            color: #ffffff;
+            transform: translateX(4px);
+            box-shadow: 0 7px 16px rgba(155, 89, 182, 0.32);
+        }
+        .cours-card:hover i, .cours-card:active i {
+            color: #ffffff;
+        }
+        .cours-card:hover i.fa-chevron-right {
+            transform: translateX(3px);
+        }
+
+        .image-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            padding: 20px;
+        }
+        .image-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .overlay-content {
+            position: relative;
+            max-width: 95vw;
+            max-height: 85vh;
+        }
+        .overlay-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+        }
+        .close-btn {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            color: #fff;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .close-btn:hover, .close-btn:active {
+            transform: scale(1.15);
+        }
+
+        @media (max-width: 520px) {
+            body { padding: 20px 12px; }
+            .container { padding: 22px 14px; border-radius: 14px; }
+            h1 { font-size: 1.7rem; margin-bottom: 20px; }
+            .cours-card { padding: 15px 16px; font-size: 0.98rem; }
+            .cours-card:hover { transform: none; }
+            .close-btn { top: -44px; right: 6px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="math.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Retour aux Mathématiques
+        </a>
+        <h1>Géométrie - Leçons</h1>
+
+        <div class="cours-list">
+            <div class="cours-card" onclick="openImage('hnd1.png')">
+                <span><i class="fa-solid fa-book" style="margin-right: 12px;"></i> التناظر المركزي</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="cours-card" onclick="openImage('hnd2.png')">
+                <span><i class="fa-solid fa-book" style="margin-right: 12px;"></i> الزوايا الناتجة عن مستقيمين متوازيين وقاطع لهما</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="cours-card" onclick="openImage('hnd3.png')">
+                <span><i class="fa-solid fa-book" style="margin-right: 12px;"></i> مثلثات متقايسة</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="cours-card" onclick="openImage('hnd4.png')">
+                <span><i class="fa-solid fa-book" style="margin-right: 12px;"></i> رباعيات الأضلاع</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="cours-card" onclick="openImage('hnd5.png')">
+                <span><i class="fa-solid fa-book" style="margin-right: 12px;"></i> الأجسام في الفضاء</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="cours-card" onclick="openImage('hnd6.png')">
+                <span><i class="fa-solid fa-book" style="margin-right: 12px;"></i> التوازي والتقاطع في الفضاء</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-overlay" id="imageOverlay" onclick="closeImage()">
+        <div class="overlay-content" onclick="event.stopPropagation()">
+            <button type="button" class="close-btn" onclick="closeImage()"><i class="fa-solid fa-xmark"></i></button>
+            <img id="popupImage" src="" alt="Cours">
+        </div>
+    </div>
+
+    <script>
+        const overlay = document.getElementById('imageOverlay');
+        const popupImage = document.getElementById('popupImage');
+        let clearTimeoutId = null;
+
+        function openImage(imgSrc) {
+            if (clearTimeoutId) {
+                clearTimeout(clearTimeoutId);
+                clearTimeoutId = null;
+            }
+            popupImage.src = imgSrc;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImage() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            clearTimeoutId = setTimeout(() => {
+                if (!overlay.classList.contains('active')) {
+                    popupImage.src = '';
+                }
+            }, 250);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                closeImage();
+            }
+        });
+    </script>
+</body>
+</html>
